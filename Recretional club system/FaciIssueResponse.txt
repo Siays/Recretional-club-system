@@ -1,8 +1,0 @@
-KA1|Karaoke|Karaoke Room 1|Sound system issue|ST0001|Sun Jun 26 16:39:19 2022|Working|ST0009|Sun Jun 26 23:12:10 2022
-BT1|Badminton|Badminton Court 1|Slippery floor|ST0009|Sun Jun 26 21:46:38 2022|False Report|ST0002|Sun Jun 26 23:13:48 2022
-BT1|Badminton|Badminton Court 1|213321321321321|ST0009|Sun Jun 26 21:03:29 2022|Postponed|ST0002|Mon Jun 27 10:07:04 2022
-BT10|Badminton|Badminton Court 10|123321|ST0002|Mon Jun 27 10:14:50 2022|Working|ST0002|Mon Jun 27 10:17:32 2022
-ST1|Snooker|Snoker Table 1|123321|ST0001|Mon Jun 27 10:19:10 2022|Postponed|ST0002|Mon Jun 27 10:20:28 2022
-ST5|Snooker|Snoker Table 5|213|ST0001|Mon Jun 27 10:30:39 2022|Postponed|ST0002|Mon Jun 27 10:53:05 2022
-BT2|Badminton|Badminton Court 2|123|ST0001|Mon Jun 27 10:38:37 2022|Postponed|ST0002|Mon Jun 27 10:39:31 2022
-BT1|Badminton|Badminton Court 1|dsadsada|ST0001|Mon Jun 27 10:54:41 2022|Working|ST0002|Mon Jun 27 11:17:22 2022
