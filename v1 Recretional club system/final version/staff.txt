@@ -1,0 +1,11 @@
+Ong Jia Xian|0186663333|M|Sabah|ST0001|1234|1|Administator|ojx@staff.mental.my|25|Resigned
+Pua Mei Ying|0106349154|F|Muar|ST0002|1234|2|IT Lead|pmy21@staff.mental.my|20|Active
+Sia Jin Her|0196729952|M|Selangor|ST0003|5268|3|IT Technician|sjh@staff.mental.my|20|Resigned
+SAA AA AA|018213312|M|Johor|ST0004|password|4|Front Desk|saa@staff.mental.my|23|Active
+Khor Yeong Jie|0127342673|M|Perak|ST0005|PS857|5|Manager|kyj20@staff.mental.my|28|Active
+Koh Wen Min|0126228812|M|Kedah|ST0006|0987|6|Accountant|kwm21@staff.mental.my|21|Resigned
+Puah Yu Leong|0137830886|M|Penang|ST0007|1314|7|Club Captain|pyl24@staff.mental.my|24|Active
+Tan Cheng Qing|0127392766|M|Pahang|ST0008|9999|8|Coach|tcq25@staff.mental.my|25|Resigned
+kho Zhi Xin|0198292857|F|Kelantan|ST0009|abc520|9|Committee|kzx18@staff.mental.my|23|Resigned
+Ling Jia Qi|0106371311|F|Melaka|ST0010|8888|10|Minister|ljq18@staff.mental.my|27|Active
+Lim Yuan Hao|0125207857|M|Perlis|ST0011|xzy666|11|Secretary|lyh21@staff.mental.my|21|Active

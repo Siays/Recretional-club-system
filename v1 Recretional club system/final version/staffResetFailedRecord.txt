@@ -1,0 +1,58 @@
+ST0001|ong jia xian|Administator|Reset Failed|Wed Mar 30 10:37:04 2022
+ST0002|pua mei ying|IT Lead|Reset Failed|Wed Mar 30 10:37:06 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 10:37:08 2022
+ST0003|sia jin her|IT Technician|System Exited|Wed Mar 30 10:37:12 2022
+ST0003|sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:16:07 2022
+ST0003|sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:16:17 2022
+ST0003|
+sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:20:09 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 12:20:13 2022
+ST0003|
+sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:20:22 2022
+ST0002|
+pua mei ying|IT Lead|System Exited|Wed Mar 30 12:20:37 2022
+ST0001|ong jia xian|Administator|Reset Failed|Wed Mar 30 12:22:11 2022
+ST0001|ong jia xian|Administator|Reset Failed|Wed Mar 30 12:22:14 2022
+ST0003|sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:24:20 2022
+ST0003|sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:27:34 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 12:27:40 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 12:27:50 2022
+ST0003|sia jin her|IT Technician|Reset Failed|Wed Mar 30 12:29:17 2022
+ST0001|ong jia xian|Administator|Reset Failed|Wed Mar 30 12:29:21 2022
+ST0002|pua mei ying|IT Lead|Reset Failed|Wed Mar 30 12:29:27 2022
+ST0003|sia jin her|IT Technician|System Exited|Wed Mar 30 12:29:31 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 14:23:13 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 14:24:02 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 14:24:14 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 14:24:14 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 14:24:15 2022
+Invalid ID|NULL|NULL|System Exited|Wed Mar 30 14:24:15 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 20:39:05 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 20:39:05 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 20:39:06 2022
+Invalid ID|NULL|NULL|System Exited|Wed Mar 30 20:39:06 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 20:40:43 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 20:40:44 2022
+Invalid ID|NULL|NULL|Reset Failed|Wed Mar 30 20:40:45 2022
+Invalid ID|NULL|NULL|System Exited|Wed Mar 30 20:40:45 2022
+Invalid ID|NULL|NULL|Reset Failed|Thu Mar 31 10:49:24 2022
+Invalid ID|NULL|NULL|Reset Failed|Thu Mar 31 10:52:40 2022
+Invalid ID|NULL|NULL|Reset Failed|Thu Mar 31 10:55:22 2022
+Invalid ID|NULL|NULL|Reset Failed|Thu Mar 31 10:56:56 2022
+Invalid ID|NULL|NULL|Reset Failed|Thu Mar 31 18:11:30 2022
+Invalid ID|NULL|NULL|Reset Failed|Thu Mar 31 18:19:51 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 18:47:00 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 18:47:02 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 23:08:48 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 23:12:14 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 23:12:15 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 23:12:15 2022
+Invalid ID|NULL|NULL|System Exited|Fri Apr  1 23:12:21 2022
+Invalid ID|NULL|NULL|Reset Failed|Fri Apr  1 23:22:49 2022
+ST0001|Ong ong Ong|Administator|Reset Failed|Sat Apr  2 02:55:31 2022
+Invalid ID|NULL|NULL|Reset Failed|Sat Apr  2 10:52:09 2022
+ST0002|Pua Mei Ying|IT Lead|Reset Failed|Sat Apr  2 13:59:10 2022
+ST0002|Pua Mei Ying|IT Lead|Reset Failed|Sat Apr  2 13:59:19 2022
+ST0002|Pua Mei Ying|IT Lead|Reset Failed|Sat Apr  2 14:00:34 2022
+ST0002|Pua Mei Ying|IT Lead|Reset Failed|Sat Apr  2 14:26:55 2022
+ST0002|Pua Mei Ying|IT Lead|Reset Failed|Fri Apr 15 08:21:41 2022

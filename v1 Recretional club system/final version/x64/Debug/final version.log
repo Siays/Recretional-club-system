@@ -1,0 +1,53 @@
+﻿  main.c
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(87,47): warning C4133: 'function': incompatible types - from 'int *' to 'char *'
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(240,42): warning C4020: 'ModifyStaffName': too many actual parameters
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(268,42): warning C4047: 'function': 'int' differs in levels of indirection from 'char [10]'
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(268,40): warning C4024: 'modifyStaffPWRP': different types for formal and actual parameter 3
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(293,71): warning C4029: declared formal parameter list different from definition
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(300,8): warning C4013: 'gets' undefined; assuming extern returning int
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(375,7): warning C4101: 'newGender': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(579,59): warning C4028: formal parameter 3 different from declaration
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(627,55): warning C4028: formal parameter 3 different from declaration
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(628,7): warning C4101: 'name': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(631,21): warning C4101: 'email': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(628,17): warning C4101: 'contact': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(628,30): warning C4101: 'gender': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(628,38): warning C4101: 'state': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(630,18): warning C4101: 'age': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(631,7): warning C4101: 'position': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(629,7): warning C4101: 'password': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(628,49): warning C4101: 'ID': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Staff.h(630,6): warning C4101: 'pwRecovery': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Facility.h(117,12): warning C4098: 'readFaci': 'void' function returning a value
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Facility.h(369,23): warning C4101: 'moreRec': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Facility.h(567,6): warning C4101: 'tempNewMaxUser': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Member.h(130,15): warning C4101: 'choice': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Member.h(316,37): warning C4101: 'phoneNumSearch': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Member.h(316,23): warning C4101: 'idSearch': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Member.h(315,16): warning C4101: 'info': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Member.h(313,20): warning C4101: 'selection': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Member.h(316,7): warning C4101: 'nameSearch': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(95,12): warning C4098: 'addBooking': 'void' function returning a value
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(124,17): warning C4013: 'CheckInBooking' undefined; assuming extern returning int
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(86,6): warning C4101: 'amount': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(85,13): warning C4101: 'confirm': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(238,6): warning C4101: 'result': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(300,7): warning C4101: 'check': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(357,12): warning C4098: 'modifyBooking': 'void' function returning a value
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Booking.h(373,6): warning C4101: 'result': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(465,34): warning C4047: 'function': 'int' differs in levels of indirection from 'char [7]'
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(465,22): warning C4024: 'toupper': different types for formal and actual parameter 1
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(465,35): warning C4047: 'function': 'const char *' differs in levels of indirection from 'int'
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(465,21): warning C4024: 'strcmp': different types for formal and actual parameter 1
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(427,6): warning C4101: 'choice': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(1225,77): warning C4090: 'function': different 'const' qualifiers
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(1225,77): warning C4113: 'int (__cdecl *)(void *,void *)' differs in parameter lists from '_CoreCrtNonSecureSearchSortCompareFunction'
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(1301,83): warning C4090: 'function': different 'const' qualifiers
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\fumodule.h(1301,83): warning C4113: 'int (__cdecl *)(void *,void *)' differs in parameter lists from '_CoreCrtNonSecureSearchSortCompareFunction'
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\main.c(173,15): warning C4013: 'getch' undefined; assuming extern returning int
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\main.c(359,65): warning C4020: 'resetFailedRecord': too many actual parameters
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\main.c(152,7): warning C4101: 'newPW': unreferenced local variable
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\main.c(488,111): warning C4029: declared formal parameter list different from definition
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\main.c(541,11): warning C4129: 'R': unrecognized character escape sequence
+C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\Facility.h(366): warning C4716: 'ModifyFacilities': must return a value
+  final version.vcxproj -> C:\Users\USER\Desktop\Courses\Sem 3\AACS1084 PCD 2\final version\final version\x64\Debug\final version.exe
