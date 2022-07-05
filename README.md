@@ -8,7 +8,7 @@ Software used: Microsoft Visual Studio
 
 There are two versions of which, 
 
-Version 1: Group Work
+Version 1: Group Work (part incharge, facility module)
 
 Version 2: Individual Work (re-do the entire assignment)
 
