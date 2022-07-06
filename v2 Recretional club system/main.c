@@ -7,6 +7,7 @@
 #include "facility.c"
 #include "member.c"
 #include "booking.c"
+#include "facilityUsage.c"
 #pragma warning(disable: 4996)
 typedef struct {
 	char ID[7], position[21], email[31], loginStatus[8], date[26];
@@ -22,8 +23,7 @@ void validatePwResetPin(char input[], int* checkValidation);
 
 // add member module
 void main() {
-	bookingModuleMain();
-	/*
+
 	char loginIDHolder[7];
 	loginRequest(loginIDHolder);
 
@@ -38,7 +38,8 @@ void main() {
 		printf("\t\t\t1. Staff Module\n");
 		printf("\t\t\t2. Facility Module\n");
 		printf("\t\t\t3. Member Module\n");
-		printf("\t\t\t4. Bookinwg Module\n");
+		printf("\t\t\t4. Booking & Walk In Module\n");
+		printf("\t\t\t5. Facility Usage Module\n");
 		printf("\t\t\t---------------------------------------------------\n");
 		printf("\t\t\tYour selection(numeric input only): ");
 		rewind(stdin);//incase user input non-numeric input. the system will go into infinite loop.
@@ -46,7 +47,7 @@ void main() {
 
 		switch (menuSelection) {
 		case 0:
-			printf("\nThank you for using our system.\n");
+			printf("\n\t\t\tThank you for using our system.\n");
 			break;
 
 		case 1:
@@ -62,35 +63,22 @@ void main() {
 			break;
 
 		
-		case 3:
-			modifyStaffMenu();
-			break;
-
 		case 4:
-			addStaff();
+			bookingAndWalkInModuleMain();
 			break;
 
+			
 		case 5:
-			changeStaffStatus();
+			facilityUsageModuleMain();
 			break;
-
-		case 6:
-			system("cls");
-			applyLeave();
-			break;
-
-		case 7:
-			system("cls");
-			reviewLeave();
-			break;
-		
+			
 		default:
 			yellow();
 			printf("\t\t\tInvalid selection!\a\n");
 			resetColor();
 			system("pause");
 		}
-	} while (menuSelection != 0); */
+	} while (menuSelection != 0); 
 }
 
 void loginRequest(char loginIDHolder[]) {

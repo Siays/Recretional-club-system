@@ -106,7 +106,8 @@ void memberModuleMain(char loginID[]) {
 
 		switch (menuSelection) {
 		case 0:
-			printf("\nExit to main menu.\n");
+			printf("\n\t\t\tExit to main menu.\n");
+			system("pause");
 			break;
 
 		case 1:

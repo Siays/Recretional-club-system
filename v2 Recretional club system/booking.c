@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <string.h>
-#include <time.h>w
+#include <time.h>
 #pragma warning(disable:4996)
 
 typedef struct {
@@ -46,7 +46,7 @@ void searchBooking();
 void searchWalkIn();
 void searchRecByMemID();
 void modifyBooking();
-void modifyWalkIn();
+
 
 //helper functions
 void autoGenerateWalkInID(char input[]);
@@ -59,25 +59,112 @@ void rangeBeforeTheDate(int dayRange, int bkMonth, int bkDay, int* outMonth, int
 void rangeAfterTheDate(int dayRange, int bkMonth, int bkDay, int* outMonth, int* outDay);
 void updateFacilityStatus();
 void verifyFacilityStatus();
+void modifyBookingDate(int* bkDay, int* bkMonth, int* bkYear);
+void modifyUsageTime(int* sHour, int* sMin, int* eHour, int* eMin);
+void modifyFacilityBooked(char oldFacilityID[], int* oldNoOfPeople, int sHour, int sMin, int eHour, int eMin);
+void modifyNumberOfUser(char currentFaciID[], int* oldNoOfUser);
+void deleteBooking();
+void deleteWalkIn();
 
-void bookingModuleMain(){
-	//display available facility
-	// display all booking
-	//search booking
-	//modify booking
-	//make booking via booking / walk in
-	//delete booking
-	//display facilities populairty
-	//display 
-	//displayBooking();
-	//displayWalkIn();
-	//verifyFacilityStatus();
-	//updateFacilityStatus();
-	
-	//makeBooking();
-	
-	//walkIn();
-	//searchBooking();
+void bookingAndWalkInModuleMain(){
+	system("cls");
+	/*
+	Staff staff;
+	FILE* readStaff;
+	readStaff = fopen("staff.txt", "r");
+	if (readStaff == NULL) {
+		red();
+		printf("Failed to open file.");
+		resetColor();
+		return;
+	}
+	while (!feof(readStaff)) {
+		fscanf(readStaff, "%[^|]|%[^|]|%[^|]|%d|%[^|]|%[^|]|%[^|]|%d\n", staff.ID, staff.name, staff.pw.password, &staff.pw.pwResetPin, staff.position, staff.email, staff.status, &staff.annualLeaveCount);
+		if (strcmp(staff.ID, loginID) == 0) {
+			break;
+		}
+	}
+	fclose(readStaff);*/
+
+
+	int menuSelection;
+	do {
+		system("cls");
+		updateFacilityStatus();
+		verifyFacilityStatus();
+		
+		printf("\t\t\t---------------------------------------------------\n");
+		printf("\t\t\t\t\Booking & Walk In Module\n");
+		printf("\t\t\t---------------------------------------------------\n");
+		printf("\t\t\t0. Exit the Module\n");
+		printf("\t\t\t1. Walk In\n");
+		printf("\t\t\t2. Make Booking\n");
+		printf("\t\t\t3. Cancel Walk In\n");
+		printf("\t\t\t4. Cancel Booking\n");
+		printf("\t\t\t5. Modify Booking\n");
+		printf("\t\t\t6. Display Current Existing Walk In Record\n");
+		printf("\t\t\t7. Display Current Existing Booking Record\n");
+		printf("\t\t\t8. Search Walk In Record By Walk In ID\n");
+		printf("\t\t\t9. Search Booking Record By Booking ID\n");
+		printf("\t\t\t10. Search All Records By Member ID\n");
+		printf("\t\t\t---------------------------------------------------\n");
+		printf("\t\t\tYour selection(numeric input only): ");
+		rewind(stdin);//incase user input non-numeric input. the system will go into infinite loop.
+		scanf("%d", &menuSelection);
+
+		switch (menuSelection) {
+		case 0:
+			printf("\n\t\t\tExit to main menu.\n");
+			system("pause");
+			break;
+
+		case 1:
+			walkIn();
+			break;
+
+		case 2:
+			makeBooking();
+			break;
+
+		case 3:
+			deleteWalkIn();
+			break;
+
+		case 4:
+			deleteBooking();
+			break;
+
+		case 5:
+			modifyBooking();
+			break;
+
+		case 6:
+			displayWalkIn();
+			break;
+
+		case 7:
+			displayBooking();
+			break;
+
+		case 8:
+			searchWalkIn();
+			break;
+
+		case 9:
+			searchBooking();
+			break;
+
+		case 10:
+			searchRecByMemID();
+			break;
+
+		default:
+			red();
+			printf("\t\t\tInvalid selection!\a\n");
+			resetColor();
+			system("pause");
+		}
+	} while (menuSelection != 0);
 }
 
 void makeBooking() {
@@ -415,6 +502,10 @@ void walkIn() {
 			scanf("%d", &duration);
 		} while (duration <= 0);
 		validateBookingTime(duration, wkIn.sTime.hour, wkIn.sTime.minute, &wkIn.eTime.hour, &wkIn.eTime.minute, &checkValidation);
+		if (!(sysHour >= 8 && sysHour <= 22)) {
+			return;
+		}
+	
 	} while (checkValidation != 0);
 
 
@@ -555,7 +646,7 @@ void walkIn() {
 
 	do {
 		checkValidation = 0;
-		printf("Enter the number of people coming for that day: \n");
+		printf("Enter number of people: \n");
 		rewind(stdin);
 		scanf("%d", &wkIn.noOfPeople);
 		if (wkIn.noOfPeople <= 0) {
@@ -577,7 +668,9 @@ void walkIn() {
 	system("cls");
 	printf("New booking details\n");
 	printf("Walk in ID: %s\nWalk in on: %02d-%02d-%d\nUsage time from: %02d:%02d\nTo: %02d:%02d\nBooking By Member ID: %s\nFacility ID: %s\nNo Of People: %d\n\n", wkIn.wID, wkIn.tDate.day, wkIn.tDate.month, wkIn.tDate.year, wkIn.sTime.hour, wkIn.sTime.minute, wkIn.eTime.hour, wkIn.eTime.minute, wkIn.memID, wkIn.faciID, wkIn.noOfPeople);
-	printf("\n\nConfirm to add the walk in?\n");
+	
+	printf("\n\nPlease make sure the details are correct,  no modifcation can be make later on\n");
+	printf("Confirm to add the walk in?\n");
 	printf("\nPress 'Y' to add the walk in, other key to exit\n");
 	char confirm;
 	confirm = getch();
@@ -663,6 +756,7 @@ void searchBooking() {
 			system("pause");
 			return;
 		}
+		system("cls");
 	} while (!(searchOpt >= 1 && searchOpt <= 2));
 	char bkID[11];
 	int checkValidation;
@@ -746,12 +840,13 @@ void searchWalkIn() {
 			system("pause");
 			return;
 		}
+		system("cls");
 	} while (!(searchOpt >= 1 && searchOpt <= 2));
 	char wkInID[11];
 	int checkValidation;
 	do {
 		checkValidation = 0;
-		printf("Enter the Booking ID seaching for: ");
+		printf("Enter the Walk In ID seaching for: ");
 		rewind(stdin);
 		fgets(wkInID, 11, stdin);
 		deleteNewLine(wkInID);
@@ -817,7 +912,7 @@ void searchRecByMemID() {
 	int searchOpt;
 	do {
 		printf("Search Record By Member ID\n");
-		printf("0. Exit\n1. Existing Booking\n 2. Existing Walk In\n 3. Booking Historic Record\n 4. Walk In Historic Record\n");
+		printf("0. Exit\n1. Existing Booking\n2. Existing Walk In\n3. Booking Historic Record\n4. Walk In Historic Record\n");
 		printf("Please key in the digit as assigned: ");
 		rewind(stdin);
 		scanf("%d", &searchOpt);
@@ -828,12 +923,13 @@ void searchRecByMemID() {
 			system("pause");
 			return;
 		}
-
-	} while (searchOpt >= 1 && searchOpt <= 4);
+		system("cls");
+	} while (!(searchOpt >= 1 && searchOpt <= 4));
 
 	int checkValidation;
 	char memID[8];
 	do {
+		checkValidation = 0;
 		printf("Enter the member ID you wish to search: ");
 		rewind(stdin);
 		fgets(memID, 8, stdin);
@@ -868,6 +964,7 @@ void searchRecByMemID() {
 	}
 
 	if (searchOpt == 2) {
+
 		FILE* readWkin = fopen("walkin.bin", "rb");
 		if (readWkin == NULL) {
 			red();
@@ -876,10 +973,11 @@ void searchRecByMemID() {
 			system("pause");
 			return;
 		}
-		WalkIn rec;
+
 		WalkIn* wkIn = malloc(100 * sizeof * wkIn);
+		WalkIn rec;
 		int matchRec = 0;
-		while (fread(&rec, sizeof(Booking), 1, readWkin) != 0) {
+		while (fread(&rec, sizeof(WalkIn), 1, readWkin) != 0) {
 			if (strcmp(rec.memID, memID) == 0) {
 				wkIn[matchRec] = rec;
 				++matchRec;
@@ -931,7 +1029,7 @@ void searchRecByMemID() {
 		WalkIn rec;
 		WalkIn* wkIn = malloc(100 * sizeof * wkIn);
 		int matchRec = 0;
-		while (fread(&rec, sizeof(Booking), 1, readWkin) != 0) {
+		while (fread(&rec, sizeof(WalkIn), 1, readWkin) != 0) {
 			if (strcmp(rec.memID, memID) == 0) {
 				wkIn[matchRec] = rec;
 				++matchRec;
@@ -960,12 +1058,312 @@ void modifyBooking() {
 		validateBookingID(bkID, &checkValidation);
 	} while (checkValidation != 0);
 
+	Booking bk;
+	
+	int recFound = 0;
+	FILE* readBk = fopen("booking.bin","r");
+	if (readBk == NULL) {
+		red();
+		printf("\aFailed to open file: booking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (fread(&bk, sizeof(Booking),1,readBk) != 0) {
+		if(strcmp(bk.bID,bkID) == 0){
+			++recFound;
+			break;
+		}
+	}
+	fclose(readBk);
 
+	if (recFound == 0) {
+		red();
+		printf("\aNo matching booking record found\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+
+	int opt;
+	do{
+		system("cls");
+		printf("Booking ID: %s\nBooking made on: %02d-%02d-%d\nDate booking for: %02d-%02d-%d\nBooking time from: %02d:%02d\nTo: %02d:%02d\nBooking By Member ID: %s\nFacility ID: %s\nNo Of People: %d\n\n", bk.bID, bk.tDate.day, bk.tDate.month, bk.tDate.year, bk.bDate.day, bk.bDate.month, bk.bDate.year, bk.sTime.hour, bk.sTime.minute, bk.eTime.hour, bk.eTime.minute, bk.memID, bk.faciID, bk.noOfPeople);
+		printf("0. Exit\n1. Change Booking Date\n2. Usage Time\n3. Facility\n4. Number of People\n");
+		printf("Key in the digit as assigned: ");
+		rewind(stdin);
+		scanf("%d", &opt);
+		switch (opt) {
+		case 0:
+			red();
+			printf("\aModification cancelled\n");
+			resetColor();
+			system("pause");
+			return;
+
+		case 1:
+			modifyBookingDate(&bk.bDate.day, &bk.bDate.month, &bk.bDate.year);
+			break;
+
+		case 2:
+			modifyUsageTime(&bk.sTime.hour,&bk.sTime.minute, &bk.eTime.hour,&bk.eTime.minute);
+			break;
+		
+		case 3:
+			modifyFacilityBooked(bk.faciID, &bk.noOfPeople, bk.sTime.hour, bk.sTime.minute, bk.eTime.hour, bk.eTime.minute);
+			break;
+
+		case 4:
+			modifyNumberOfUser(bk.faciID, &bk.noOfPeople);
+			break;
+
+		default:
+			red();
+			printf("\aInvalid selection\n");
+			resetColor();
+			system("pause");
+		}
+	} while (!(opt >= 1 && opt <= 4));
+
+	Booking rec;
+	FILE* writeBk = fopen("tempBooking.bin", "wb");
+	readBk = fopen("booking.bin", "rb");
+	if (writeBk == NULL) {
+		red();
+		printf("\aFailed to open file: tempBooking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	if (readBk == NULL) {
+		red();
+		printf("\aFailed to open file: booking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (fread(&rec,sizeof(Booking), 1,readBk) != 0) {
+		if (strcmp(rec.bID, bk.bID) == 0) {
+			fwrite(&bk,sizeof(Booking),1,writeBk);
+		}
+		else {
+			fwrite(&rec,sizeof(Booking),1,writeBk);
+		}
+	}
+	fclose(writeBk);
+	fclose(readBk);
+
+	remove("booking.bin");
+	rename("tempBooking.bin","booking.bin");
 }
 
-void modifyWalkIn() {
+void deleteBooking() {
+	int checkValidation;
+	char bkID[11];
+	do {
+		system("cls");
+		checkValidation = 0;
+		printf("Delete current existing booking\n");
+		printf("Enter the booking ID that wish to delete: ");
+		rewind(stdin);
+		fgets(bkID, 11, stdin);
+		deleteNewLine(bkID);
+		validateBookingID(bkID, &checkValidation);
+	} while (checkValidation != 0);
+	Booking bk;
+	int recordFound = 0;
+	FILE* readRec = fopen("booking.bin", "rb");
+	if (readRec == NULL) {
+		red();
+		printf("\aFailed to open file: booking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (fread(&bk, sizeof(Booking), 1, readRec) != 0) {
+		if (strcmp(bk.bID, bkID) == 0) {
+			++recordFound;
+			break;
+		}
+	}
+	fclose(readRec);
+	if (recordFound == 0) {
+		red();
+		printf("\aNo matching ID found\n");
+		resetColor();
+		system("pause");
+		return;
+	}
 
+	system("cls");
+	printf("Booking details\n");
+	printf("Booking ID: %s\nBooking made on: %02d-%02d-%d\nDate booking for: %02d-%02d-%d\nBooking time from: %02d:%02d\nTo: %02d:%02d\nBooking By Member ID: %s\nFacility ID: %s\nNo Of People: %d\n\n", bk.bID, bk.tDate.day, bk.tDate.month, bk.tDate.year, bk.bDate.day, bk.bDate.month, bk.bDate.year, bk.sTime.hour, bk.sTime.minute, bk.eTime.hour, bk.eTime.minute, bk.memID, bk.faciID, bk.noOfPeople);
+	printf("Confirm to delete the booking?\n");
+	red();
+	printf("\aPlease the inform that the deletion is uninvertible\n");
+	resetColor();
+	printf("Press 'Y' to delete, other key to exit\n");
+	char confirm;
+	confirm = getch();
+	confirm = toupper(confirm);
+	if (confirm != 'Y') {
+		red();
+		printf("\aDeletion cancelled\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+
+	Booking rec;
+	readRec = fopen("booking.bin", "rb");
+	FILE* writeRec = fopen("tempBooking.bin", "wb");
+	FILE* appendDeletedRec = fopen("deletedBooking.bin", "ab");
+	if (readRec == NULL) {
+		red();
+		printf("\aFailed to open file: booking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	if (writeRec == NULL) {
+		red();
+		printf("\aFailed to open file: tempBooking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	if (appendDeletedRec == NULL) {
+		red();
+		printf("\aFailed to open file: deletedBooking.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (fread(&rec, sizeof(Booking), 1, readRec) != 0) {
+		if (strcmp(rec.bID, bk.bID) == 0) {
+			fwrite(&bk, sizeof(Booking), 1, appendDeletedRec);
+		}
+		else {
+			fwrite(&rec, sizeof(Booking), 1, writeRec);
+		}
+	}
+	fclose(readRec);
+	fclose(writeRec);
+	fclose(appendDeletedRec);
+
+	remove("booking.bin");
+	rename("tempBooking.bin", "booking.bin");
+
+	red();
+	printf("\aBooking cancelled\n");
+	resetColor();
+	system("pause");
 }
+
+void deleteWalkIn() {
+	int checkValidation;
+	char wkInID[11];
+	do {
+		system("cls");
+		checkValidation = 0;
+		printf("Delete current existing walk in\n");
+		printf("Enter the walk in ID that wish to delete: ");
+		rewind(stdin);
+		fgets(wkInID, 11, stdin);
+		deleteNewLine(wkInID);
+		validateWalkInID(wkInID, &checkValidation);
+	} while (checkValidation != 0);
+	WalkIn wkIn;
+	int recordFound = 0;
+	FILE* readRec = fopen("walkin.bin", "rb");
+	if (readRec == NULL) {
+		red();
+		printf("\aFailed to open file: walkin.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (fread(&wkIn, sizeof(WalkIn), 1, readRec) != 0) {	
+		if (strcmp(wkIn.wID, wkInID) == 0) {
+			++recordFound;
+			break;
+		}
+	}
+	fclose(readRec);
+	printf("Walk in ID Rec: %s\nWalk in ID to delete: %s", wkIn.wID, wkInID);
+	if (recordFound == 0) {
+		red();
+		printf("\aNo matching ID found\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+
+	system("cls");
+	printf("Walk in details\n");
+	printf("Walk in ID: %s\nWalk in on: %02d-%02d-%d\nUsage time from: %02d:%02d\nTo: %02d:%02d\nBooking By Member ID: %s\nFacility ID: %s\nNo Of People: %d\n\n", wkIn.wID, wkIn.tDate.day, wkIn.tDate.month, wkIn.tDate.year, wkIn.sTime.hour, wkIn.sTime.minute, wkIn.eTime.hour, wkIn.eTime.minute, wkIn.memID, wkIn.faciID, wkIn.noOfPeople);
+	printf("Confirm to delete the walk in?\n");
+	red();
+	printf("\aPlease the inform that the deletion is uninvertible\n");
+	resetColor();
+	printf("Press 'Y' to delete, other key to exit\n");
+	char confirm;
+	confirm = getch();
+	confirm = toupper(confirm);
+	if (confirm != 'Y') {
+		red();
+		printf("\aDeletion cancelled\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+
+	WalkIn rec;
+	readRec = fopen("walkin.bin", "rb");
+	FILE* writeRec = fopen("tempWalkin.bin", "wb");
+	FILE* appendDeletedRec = fopen("deletedWalkin.bin", "ab");
+	if (readRec == NULL) {
+		red();
+		printf("\aFailed to open file: walkin.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	if (writeRec == NULL) {
+		red();
+		printf("\aFailed to open file: tempWalkin.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	if (appendDeletedRec == NULL) {
+		red();
+		printf("\aFailed to open file: deletedWalkin.bin\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (fread(&rec, sizeof(WalkIn), 1, readRec) != 0) {
+		if (strcmp(rec.wID, wkIn.wID) == 0) {
+			fwrite(&wkIn, sizeof(WalkIn), 1, appendDeletedRec);
+		}
+		else {
+			fwrite(&rec, sizeof(WalkIn), 1, writeRec);
+		}
+	}
+	fclose(readRec);
+	fclose(writeRec);
+	fclose(appendDeletedRec);
+
+	remove("walkin.bin");
+	rename("tempWalkin.bin", "walkin.bin");
+
+	red();
+	printf("\Walk in cancelled\n");
+	resetColor();
+	system("pause");
+}
+
 //helper functions
 void autoGenerateWalkInID(char input[]) {
 	time_t t = time(NULL);
@@ -1266,7 +1664,7 @@ void validateWalkInID(char input[], int* checkValidation) {
 	if (input[0] != 'W' && input[0] != 'w') {
 		++* checkValidation;
 		red();
-		printf("\aInput on position 1 must be B\n");
+		printf("\aInput on position 1 must be W\n");
 		resetColor();
 		system("pause");
 		return;
@@ -1475,6 +1873,9 @@ void validateBetweenDate(char memID[], int bookingForMonth, int bookingForDay, i
 	fclose(readBkRec);
 }
 void updateFacilityStatus() {
+	//change facility status from operating to in use
+	//if the usage time up the record will be moved to historic record
+	// then proceed to verifyFacilityStatus function
 	time_t t = time(NULL);
 	struct tm time = *localtime(&t);
 	int sysMonth = time.tm_mon + 1;
@@ -1528,13 +1929,15 @@ void updateFacilityStatus() {
 					}
 				}
 			}
+
+			/*
 			if (strcmp(wkIn[j].faciID, facility[i].ID) == 0) {
 				if (sysDay == wkIn[j].tDate.day && sysMonth == wkIn[j].tDate.month && sysYear == wkIn[j].tDate.year) {
 					if ((sysHour >= wkIn[j].eTime.hour && sysMinute > wkIn[j].eTime.minute) && strcmp(facility[i].status, "In Use") == 0) {
 						strcpy(facility[i].status, "Operating");
 					}
 				}
-			}
+			}*/
 		}
 	}
 
@@ -1559,8 +1962,7 @@ void updateFacilityStatus() {
 		return;
 	}
 	for (int i = 0; i < totalWalkInRec; i++) {	
-		
-		if (sysYear > wkIn[i].tDate.year || sysMonth > wkIn[i].tDate.month || (sysMonth == wkIn[i].tDate.month && sysDay > wkIn[i].tDate.day)) {
+		if (sysYear > wkIn[i].tDate.year || sysMonth > wkIn[i].tDate.month || (sysMonth == wkIn[i].tDate.month && sysDay > wkIn[i].tDate.day) || (sysMonth == wkIn[i].tDate.month && sysDay == wkIn[i].tDate.day && sysHour > wkIn[i].eTime.hour) ||(sysMonth == wkIn[i].tDate.month && sysDay == wkIn[i].tDate.day && sysHour == wkIn[i].eTime.hour && sysMinute > wkIn[i].eTime.minute)) {
 			fwrite(&wkIn[i], sizeof(WalkIn),1,appendRec);
 		}
 		else {
@@ -1575,9 +1977,10 @@ void updateFacilityStatus() {
 		printf("faci ID: %s faci Status: %s\n", facility[i].ID, facility[i].status);
 	}
 	system("pause");*/
+
 	Booking *bk = malloc(100 *sizeof *bk);
 	FILE* readBk = fopen("booking.bin", "rb");
-	if (readWkIn == NULL) {
+	if (readBk == NULL) {
 		red();
 		printf("\aFailed to open file: booking.bin\n");
 		resetColor();
@@ -1589,21 +1992,27 @@ void updateFacilityStatus() {
 		++totalBkCount;
 	}
 	fclose(readBk);
+	/*
+	for (int i = 0; i < totalBkCount; i++) {
+		printf("Bking ID: %s\tFaci ID: %s\n", bk[i].bID, bk[i].faciID);
+	}
+	system("pause");*/
 
 	for (int i = 0; i < totalFaciCount; i++) {
 		for(int j=0;j<totalBkCount;j++){
 		if (strcmp(bk[j].faciID, facility[i].ID) == 0 && sysDay == bk[j].bDate.day && sysMonth == bk[j].bDate.month && sysYear == bk[j].bDate.year && sysHour >= bk[j].sTime.hour && sysHour <= bk[j].eTime.hour && strcmp(facility[i].status, "Operating") == 0) {
 				strcpy(facility[i].status, "In Use");
 		}
+		/*
 		if (strcmp(bk[j].faciID, facility[i].ID) == 0 && sysDay == bk[j].bDate.day && sysMonth == bk[j].bDate.month && sysYear == bk[j].bDate.year && (sysHour >= bk[j].eTime.hour && sysMinute > bk[j].eTime.minute) && strcmp(facility[i].status, "In Use") == 0) {
 				strcpy(facility[i].status, "Operating");
-			}
+			}*/
 		}
 	}
 	
 	FILE* writeBkRec = fopen("booking.bin", "wb");
 	appendRec = fopen("BookingFacilityUsage.bin", "ab");
-	if (writeWalkInRec == NULL) {
+	if (writeBkRec == NULL) {
 		red();
 		printf("\aFailed to open file: booking.bin\n");
 		resetColor();
@@ -1621,8 +2030,8 @@ void updateFacilityStatus() {
 		free(bk);
 		return;
 	}
-	for (int i = 0; i < totalWalkInRec; i++) {
-		if (sysYear > bk[i].tDate.year || sysMonth > bk[i].tDate.month || (sysMonth == bk[i].tDate.month && sysDay > bk[i].tDate.day)) {
+	for (int i = 0; i < totalBkCount; i++) {
+		if (sysYear > bk[i].tDate.year || sysMonth > bk[i].tDate.month || (sysMonth == bk[i].tDate.month && sysDay > bk[i].tDate.day) || (sysMonth == bk[i].bDate.month && sysDay == bk[i].bDate.day && sysHour > bk[i].eTime.hour) || (sysMonth == bk[i].bDate.month && sysDay == bk[i].bDate.day && sysHour == bk[i].eTime.hour && sysMinute > bk[i].eTime.minute)) {
 			fwrite(&bk[i], sizeof(Booking), 1, appendRec);
 		}
 		else {
@@ -1707,6 +2116,7 @@ void verifyFacilityStatus() {
 	}
 	fclose(readBk);
 
+	/*
 	for (int i = 0; i < totalFaciCount; i++) {
 		if (strcmp(facility[i].status, "In Use") == 0) {
 			if(totalWkInCount > 0){
@@ -1751,8 +2161,50 @@ void verifyFacilityStatus() {
 				}
 			}
 		}
-	}
+	}*/
 	
+	for (int i = 0; i < totalFaciCount; i++) {
+		if (facility[i].status, "In Use") {
+			if (totalWkInCount == 0) {
+				strcpy(facility[i].status, "Operating");
+			}
+			else {
+				for (int j = 0; j < totalWkInCount; j++) {
+					if (strcmp(wkIn[j].faciID, facility[i].ID) == 0) {
+						break;
+					}
+					if (j == (totalWkInCount - 1) && strcmp(wkIn[j].faciID, facility[i].ID) != 0) {
+						for(int k=0;k<totalBkCount;k++){
+							if (strcmp(bk[k].faciID, facility[i].ID) == 0) {
+								if (sysMonth == bk[k].bDate.month && sysDay == bk[k].bDate.day) {
+									if (sysHour >= bk[k].sTime.hour && sysHour <= bk[k].eTime.hour) {
+										if(sysHour == bk[k].eTime.hour && sysMinute < bk[k].eTime.minute){
+											break;
+										}
+										else {
+											strcpy(facility[i].status, "Operating");
+										}
+									}
+									else {
+										strcpy(facility[i].status, "Operating");
+									}
+
+								}
+								else {
+									strcpy(facility[i].status, "Operating");
+								}
+							}
+							if(k == (totalBkCount -1) && strcmp(bk[k].faciID, facility[i].ID) != 0) {
+								strcpy(facility[i].status, "Operating");
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+
 	free(wkIn);
 	free(bk);
 	/*
@@ -1779,6 +2231,317 @@ void verifyFacilityStatus() {
 	fclose(writeFaci);
 
 	free(facility);
+}
+void modifyBookingDate(int* bkDay, int* bkMonth, int *bkYear) {
+	time_t t = time(NULL);
+	struct tm time = *localtime(&t);
+	int sysMonth = time.tm_mon + 1;
+	int sysDay = time.tm_mday;
+	int sysYear = time.tm_year + 1900;
+	
+	int tempMonth, tempDay, tempYear;
+	int checkValidation;
+	do{
+		system("cls");
+		checkValidation = 0;
+		printf("Enter the new booking date: ");
+		printf("Year: ");
+		rewind(stdin);
+		scanf("%d", &tempYear);
+
+		printf("Month: ");
+		rewind(stdin);
+		scanf("%d", &tempMonth);
+
+		printf("Day: ");
+		rewind(stdin);
+		scanf("%d", &tempDay);
+		validateDate(tempDay, tempMonth, tempYear, &checkValidation);
+		if (sysDay == tempDay && sysMonth == tempMonth && sysYear == tempYear) {
+			++checkValidation;
+			red();
+			printf("Booking must be made 1 day in advance\n");
+			resetColor();
+			system("pause");
+		}
+	} while (checkValidation);
+	printf("Current booking date: %02d-%02d-%d\n", *bkDay, *bkMonth,*bkYear);
+	printf("New booking date: %02d-%02d-%d\n", tempDay, tempMonth,tempYear);
+	printf("\nConfirm to update the booking date?\n");
+	printf("Press 'Y' to update, other key to exit\n");
+	char confirm;
+	confirm = getch();
+	confirm = toupper(confirm);
+	if (confirm != 'Y') {
+		red();
+		printf("\aModification cancelled\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+
+	*bkDay = tempDay;
+	*bkMonth = tempMonth;
+	*bkYear = tempYear;
+
+	printf("\aModification succeed\n");
+	system("pause");
+}
+void modifyUsageTime(int* sHour, int* sMin, int *eHour, int *eMin) {
+	time_t t = time(NULL);
+	struct tm time = *localtime(&t);
+	int sysHour = time.tm_hour;
+	int sysMin = time.tm_min;
+
+	int tempHour, tempMinute, duration, tempEHour, tempEMin;
+	int checkValidation;
+	do {
+		system("cls");
+		checkValidation = 0;
+		printf("Enter the new booking hour: ");
+		printf("Hour[08-22]: ");
+		rewind(stdin);
+		scanf("%d", &tempHour);
+
+		printf("Minute[00-59]: ");
+		rewind(stdin);
+		scanf("%d", &tempMinute);
+
+		printf("Enter facility usage duration in hour [Minimum 1 hour]:");
+		rewind(stdin);
+		scanf("%d", &duration);
+
+		validateBookingTime(duration, tempHour, tempMinute, &tempEHour, &tempEMin, &checkValidation);
+	} while (checkValidation);
+	printf("Current booking hour, FROM: %02d:%02d\tTO: %02d:%02d\n", *sHour, *sMin, *eHour, *eMin);
+	printf("New booking hour, FROM: %02d:%02d\tTO: %02d:%02d\n", tempHour, tempMinute, tempEHour, tempEMin);
+	printf("\nConfirm to update the booking date?\n");
+	printf("Press 'Y' to update, other key to exit\n");
+	char confirm;
+	confirm = getch();
+	confirm = toupper(confirm);
+	if (confirm != 'Y') {
+		red();
+		printf("\aModification cancelled\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	*sHour = tempHour;
+	*sMin = tempMinute;
+	*eHour = tempEHour;
+	*eMin = tempEMin;
+
+	red();
+	printf("\aModification succeed\n");
+	resetColor();
+	system("pause");
+}
+void modifyFacilityBooked(char oldFacilityID[], int* oldNoOfPeople, int sHour, int sMin,int eHour, int eMin) {
+	int checkValidation;
+	char tempFaciType[16], tempFaciID[5];
+	
+	Facility facility;
+	Facility* matchFaciType = malloc(100 * sizeof * matchFaciType);
+	int recordFound = 0;
+	do {
+		FILE* readFaci = fopen("facilities.txt", "r");
+		if (readFaci == NULL) {
+			red();
+			printf("\aFailed to open file: facilities.txt\n");
+			resetColor();
+			system("pause");
+			return;
+		}
+		checkValidation = 0;
+		system("cls");
+		printf("Enter the facility type you wish to change to: ");
+		rewind(stdin);
+		fgets(tempFaciType,16,stdin);
+		deleteNewLine(tempFaciType);
+		validateFaciType(tempFaciType, &checkValidation);
+		if (checkValidation == 0) {
+			while (!feof(readFaci)) {
+				fscanf(readFaci, "%[^|]|%[^|]|%[^|]|%[^|]|%d|%[^\n]\n", facility.ID, facility.type, facility.description, facility.venue, &facility.maxUser, facility.status);
+				if (strcmp(facility.type, tempFaciType) == 0) {
+					matchFaciType[recordFound] = facility;
+					++recordFound;
+				}
+			}
+			if (recordFound == 0) {
+				++checkValidation;
+				red();
+				printf("\aNo matching facility type found\n");
+				resetColor();
+				system("pause");
+			}
+		}
+		fclose(readFaci);
+	} while (checkValidation != 0);
+
+	int noOfRecord;
+
+	do {
+		checkValidation = 0;
+		do {
+			for (int i = 0; i < recordFound; i++) {
+				printf("No of record: %d\n", i + 1);
+				printf("Facility ID: %s\nFacility Type: %s\nFaclity Description: %s\nVenue: %s\nMax.User Allowed: %d\nStatus: %s\n\n", matchFaciType[i].ID, matchFaciType[i].type, matchFaciType[i].description, matchFaciType[i].venue, matchFaciType[i].maxUser, matchFaciType[i].status);
+			}
+			printf("Key in the no of record to book[0 to exit]: ");
+			rewind(stdin);
+			scanf("%d", &noOfRecord);
+			if (noOfRecord == 0) {
+				red();
+				printf("\aBooking cancelled\n");
+				resetColor();
+				system("pause");
+				free(matchFaciType);
+				return;
+			}
+		} while (!(noOfRecord >= 1 && noOfRecord <= recordFound));
+
+		for (int i = 0; i < recordFound; i++) {
+			if (i == noOfRecord - 1) {
+				facility = matchFaciType[i];
+				break;
+			}
+		}
+
+		Booking bkRec;
+		FILE* readBkRec = fopen("booking.bin", "rb");
+		if (readBkRec == NULL) {
+			red();
+			printf("\aFailed to open file: booking.bin\n");
+			resetColor();
+			system("pause");
+			free(matchFaciType);
+			return;
+		}
+		while (fread(&bkRec, sizeof(Booking), 1, readBkRec) != 0) {
+			if (strcmp(bkRec.faciID, facility.ID) == 0 && (sHour >= bkRec.sTime.hour && sHour <= bkRec.eTime.hour) && (sMin >= bkRec.sTime.minute && sMin <= bkRec.eTime.minute)) {
+				++checkValidation;
+				red();
+				printf("\aPlease proceed to other facility ID as the selected facility will not be available at the timing\n");
+				resetColor();
+				system("pause");
+			}
+		}
+		fclose(readBkRec);
+		if (checkValidation == 0) {
+			strcpy(tempFaciID, facility.ID);
+		}
+	} while (checkValidation != 0);
+
+	int tempNoOfPeople;
+	do {
+		checkValidation = 0;
+		printf("Enter the number of people coming for that day: \n");
+		rewind(stdin);
+		scanf("%d", &tempNoOfPeople);
+		if (tempNoOfPeople <= 0) {
+			++checkValidation;
+			red();
+			printf("\aInvalid number of people\n");
+			resetColor();
+			system("pause");
+		}
+		if (tempNoOfPeople > facility.maxUser) {
+			++checkValidation;
+			red();
+			printf("\aMaximum user allowed is %d\n", facility.maxUser);
+			resetColor();
+			system("pause");
+		}
+	} while (checkValidation != 0);
+
+	system("cls");
+	printf("Before modification, Facility Booking: %s\tNumber of People: %d\n", oldFacilityID, *oldNoOfPeople);
+	printf("After modification, Facility Booking: %s\tNumber of Peoplew: %d\n", tempFaciID, tempNoOfPeople);
+	printf("\nConfirm to update the modification?\n");
+	printf("Press 'Y' to confirm, other key to cancel modification\n");
+	char confirm;
+	confirm = getch();
+	confirm = toupper(confirm);
+	if (confirm != 'Y') {
+		red();
+		printf("\aModification cancelled\n");
+		resetColor();
+		system("pause");
+		free(matchFaciType);
+		return;
+	}
+
+	strcpy(oldFacilityID, tempFaciID);
+	*oldNoOfPeople = tempNoOfPeople;
+
+	red();
+	printf("\aModification succeed\n");
+	resetColor();
+	system("pause");
+	free(matchFaciType);
+}
+void modifyNumberOfUser(char currentFaciID[], int *oldNoOfUser) {
+	Facility facility;
+	FILE* readFaci = fopen("facilities.txt","r");
+	if (readFaci == NULL) {
+		red();
+		printf("\aFailed to open file: facilities.txt\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+	while (!feof(readFaci)) {
+		fscanf(readFaci, "%[^|]|%[^|]|%[^|]|%[^|]|%d|%[^\n]\n", facility.ID, facility.type, facility.description, facility.venue, &facility.maxUser, facility.status);
+		if (strcmp(facility.ID, currentFaciID) == 0) {
+			break;
+		}
+	}
+	fclose(readFaci);
+
+	int tempNoOfUser, checkValidation;
+	do {
+		checkValidation = 0;
+		printf("Enter the number of people coming for that day: \n");
+		rewind(stdin);
+		scanf("%d", &tempNoOfUser);
+		if (tempNoOfUser <= 0) {
+			++checkValidation;
+			red();
+			printf("\aInvalid number of people\n");
+			resetColor();
+			system("pause");
+		}
+		if (tempNoOfUser > facility.maxUser) {
+			++checkValidation;
+			red();
+			printf("\aMaximum user allowed is %d\n", facility.maxUser);
+			resetColor();
+			system("pause");
+		}
+	} while (checkValidation != 0);
+
+	system("cls");
+	printf("Before modification, Number of user: %d\n", *oldNoOfUser);
+	printf("After modification, Number of user: %d\n", tempNoOfUser);
+	printf("\nConfirm to update the modification?\n");
+	printf("Press 'Y' to confirm, other key to cancel modification\n");
+	char confirm;
+	confirm = getch();
+	confirm = toupper(confirm);
+	if (confirm != 'Y') {
+		red();
+		printf("\aModification cancelled\n");
+		resetColor();
+		system("pause");
+		return;
+	}
+
+	*oldNoOfUser = tempNoOfUser;
+	red();
+	printf("\aModification succeed\n");
+	resetColor();
+	system("pause");
 }
 
 

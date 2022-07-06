@@ -141,7 +141,8 @@ void staffModuleMain(char loginID[]) {
 
 	switch (menuSelection) {
 	case 0:
-		printf("\nExit to main menu.\n");
+		printf("\n\t\t\tExit to main menu.\n");
+		system("pause");
 		break;
 
 	case 1: 
@@ -1742,7 +1743,7 @@ void validateDate(int currentDay, int currentMonth, int currentYear, int* checkV
 		return;
 	}
 
-	if (!(currentMonth >= 1 || currentMonth <= 12)) {
+	if (!(currentMonth >= 1 && currentMonth <= 12)) {
 		red();
 		printf("Illogical input of month\n");
 		resetColor();

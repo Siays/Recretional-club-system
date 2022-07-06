@@ -249,7 +249,9 @@ void searchFaciMenu() {
 		scanf("%d", &menuSelection);
 		switch (menuSelection) {
 		case 0:
-			return;
+			printf("\n\t\t\tExit to main menu.\n");
+			system("pause");
+			break;
 		
 		case 1:
 			searchFaciByID();

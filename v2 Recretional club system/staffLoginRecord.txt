@@ -137,3 +137,5 @@ ST0014|CR Personnel|opps@email.com|Succeed|Fri Jul  1 11:53:25 2022
 ST0014|CR Personnel|opps@email.com|Succeed|Fri Jul  1 11:54:23 2022
 ST0014|CR Personnel|opps@email.com|Succeed|Fri Jul  1 11:55:58 2022
 ST0012|CR Manager|adjs@email.com|Succeed|Fri Jul  1 11:57:32 2022
+ST0001|IT Manager|johnsys@email.com|Succeed|Wed Jul  6 15:50:32 2022
+ST0001|IT Manager|johnsys@email.com|Succeed|Wed Jul  6 22:01:31 2022

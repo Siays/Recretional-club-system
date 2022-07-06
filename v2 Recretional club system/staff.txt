@@ -1,6 +1,6 @@
 ST0001|John Sia Yeong Sheng|password1|1|IT Manager|johnsys@email.com|Active|19
 ST0002|Alan Sia Yeong Yeong|password2|2|Facility Manager|alansyy@email.com|Active|15
-ST0003|Jason Sia Sheng Yeong|password3|3|HR Manager|jasonssy@email.com|On leave|10
+ST0003|Jason Sia Sheng Yeong|password3|3|HR Manager|jasonssy@email.com|Active|10
 ST0004|Martin Sia Sia Sheng|password4|4|HR Personnel|martinsss@email.com|Resigned|5
 ST0005|Chris Yeong Sheng Sia|password5|5|IT Tenchnician|chrisyss@email.com|Active|10
 ST0006|Jayden Yeong Yeong Sheng|password6|6|HR Personnel|jaydenyys@email.com|Active|0

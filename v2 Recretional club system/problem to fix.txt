@@ -1,43 +1,36 @@
+booking rec will be delete if there is no walk in rec
+most likely problem in updateFacilityStatus
+
+
+facility status doesn't change after booking / walkin cancelled 
+
+
+
+
+
+
+
+
+
+
+modify booking facility
+number of user
+
+
+
+
+
+
 both verify and facility status update
 
-check in hour > 2200
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+check in hour > 22
 
 
 
 consider all half year
 if march 31 apply, end on 31-09-2023, illogic date.
 May 31, nov 31
-9 29 - 31 , feb 28 / feb 29 
-
-
-
-
-
-
-
-
-
+9 29 - 31 , feb 28 / feb 29
 
 
 
@@ -72,10 +65,8 @@ qsort then use atoi
 
 
 
-
 sort strlen = 3 first ignore strlen = 4
 then sort strlen = 4 ignore strlen = 3
-
 
 
 2 array, 1 to store 1-9, 1 to store 10++
