@@ -18,9 +18,16 @@ since the individual work is my own initiation (non-academic required).
 
 
 Highlight of V2
+
 -reorganize login function
+
 -leave system for staff
+
 -more validation on every crucial data
+
 -facility status update
+
 -report member function
+
 -facility issue report function
+
